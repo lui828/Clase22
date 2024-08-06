@@ -1,16 +1,25 @@
-hora24 = input("Ingrese hora formato 24 horas(HH:MM):")
-partes = hora24.split(":")
-horas = int(partes[0])
-minutos = int(partes[1])
-doce = "am"
-if horas>=12:
-    doce = "pm"
-if horas>12:
-    horas-=12
-elif horas==12:
-    horas = 12
-    print(f"la hora en formato de 12 es {horas}:{minutos:02d}{doce}")
-
-
-
+def convertir_hora_24_a_12(hora_24):
+    
+    hora, minutos = map(int, hora_24.split(':'))
+    
+    if hora == 0:
+        hora_12 = 12
+        
+    elif hora < 12:
+        hora_12 = hora
+        
+    elif hora == 12:
+        hora_12 = 12 
+        sufijo = 'PM'
+    else:
+        hora_12 = hora - 12
+        sufijo = 'PM'
+        
+        
+    hora_12_formateada = f"{hora_12}:{minutos:02d}{sufijo}"
+    
+    return hora_12_formateada
+hora_24 = "13:45"
+hora_12 = convertir_hora_24_a_12(hora_24)
+print(hora_12)
 
